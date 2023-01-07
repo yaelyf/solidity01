@@ -39,7 +39,7 @@ contract Simplebank {
   }
 
 function withdraw(uint withdrawAmount) external {
-  //require(withdrawAmount < 1000000000000000000 || msg.sender == owner, "You can`t withdraw more then 1 ether");
+  require(withdrawAmount < 1000000000000000000 || msg.sender == owner, "You can`t withdraw more then 1 ether");
   payable (msg.sender).transfer(withdrawAmount);
 }
   
@@ -52,5 +52,5 @@ function withdraw(uint withdrawAmount) external {
 //const funds = instance.funds()
 //instance.getAllFunders()
 //instance.getAllFunds()
-//instance.withdraw(1000000000000000000)
+//instance.withdraw("1000000000000000000", {from: accounts[1]}})
 //instance.transferOwnership("0x3C0CB6eE614b8202559E3e5c39a8d89bdA7Fb82D")
