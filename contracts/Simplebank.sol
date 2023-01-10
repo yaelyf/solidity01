@@ -6,6 +6,7 @@ contract Simplebank {
   uint public numberOfFunders;
   mapping(address => bool) private funders;
   mapping(uint => address) private lutFunders;
+  mapping(address => uint) private funderAmont;
   address public owner;
 
   constructor (){
@@ -28,6 +29,7 @@ contract Simplebank {
       funders[funder] = true;
       lutFunders[index] = funder;
     }
+    funderAmont[funder] += msg.value;
   }
 
   function getAllFunders() external view returns(address[] memory) {
